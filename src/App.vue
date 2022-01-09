@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" />
-    <AddTask />
+    <AddTask @add-task="addTask" />
     <Tasks
       :tasks="tasks"
       @delete-task="deleteTask"
@@ -66,6 +66,9 @@ export default {
         ...task,
         reminder: task.id === id ? !task.reminder : task.reminder,
       }));
+    },
+    addTask(newTask) {
+      this.tasks = [...this.tasks, newTask];
     },
   },
 };
